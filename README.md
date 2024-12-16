@@ -7,4 +7,5 @@
 - Run docker compose up -d (on first run cache error may occur on app container, just run docker compose down && docker compose up -d again)
 - Run docker exec -it app bash
 - Run php artisan make:filament-user
-- Go to http://localhost:8080/admin & login
+- Go to http://localhost:8080/admin/firebase-notifications & login
+- Click on send notification button, fill form & submit
