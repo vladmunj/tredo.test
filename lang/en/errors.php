@@ -7,7 +7,8 @@ return [
             'statuses' => [
                 '400' => 'Error',
                 '200' => 'Sended successfully',
-                '201' => 'Sended successfully'
+                '201' => 'Sended successfully',
+                '404' => 'Not found'
             ]
         ]
     ]

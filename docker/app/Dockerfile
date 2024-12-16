@@ -6,13 +6,15 @@ RUN apt-get update && apt-get install -y \
         git \
         curl \
         zip \
-        unzip
+        unzip \
+        libicu-dev
  
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
  
 # Install extensions for php
-RUN docker-php-ext-install pdo pdo_pgsql pgsql
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install pdo pdo_pgsql pgsql intl
 
 # Copy vendor directory
 COPY vendor /var/www/tredo/test/vendor

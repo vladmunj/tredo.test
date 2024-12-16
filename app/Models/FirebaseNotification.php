@@ -11,4 +11,8 @@ class FirebaseNotification extends Model
     protected $casts = [
         'http_response' => 'array'
     ];
+
+    public function device(){
+        return $this->belongsTo(Device::class,'device_id','id');
+    }
 }
