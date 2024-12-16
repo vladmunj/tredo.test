@@ -9,3 +9,15 @@
 - Run php artisan make:filament-user
 - Go to http://localhost:8080/admin/firebase-notifications & login
 - Click on send notification button, fill form & submit
+- Endpoint for register new device: [POST] http://localhost:8080/api/device/register
+- Body:
+```bash
+    {
+        "user_id": 1,
+        "token": "u13uec1f120u9"
+    }
+```
+- Headers:
+```bash
+    Accept: application/json
+```
