@@ -40,10 +40,14 @@ class FirebaseNotificationSend extends Page implements HasForms
         $this->validate();
 
         # Dispatching jobs for all registered devices with user setting delay (notify date time value)
-        Device::all()->map(function($device){
-            FirebaseNotificationJob::dispatch($device,$this->header,$this->message)
-                ->delay(Carbon::createFromFormat('Y-m-d\TH:i',$this->notify_date_time));
-        });
+        try{
+            Device::all()->map(function($device){
+                FirebaseNotificationJob::dispatch($device,$this->header,$this->message)
+                    ->delay(Carbon::createFromFormat('Y-m-d\TH:i',$this->notify_date_time));
+            });
+        }catch(\Exception $e){
+            Notification::make()->title(__('filament.firebase.notification.alert.error'))->error()->send();
+        }
 
         Notification::make()->title(__('filament.firebase.notification.alert.success'))->success()->send();
     }
